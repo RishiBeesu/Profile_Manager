@@ -8,14 +8,12 @@ const {
   deleteProfile,
 } = require("../controllers/profileControllers");
 
-router.route("/").get(getAllProfiles);
+router.route("/").get(getAllProfiles).post(createProfile);
 
-router.route("/").post(createProfile);
-
-router.route("/:id").get(getProfileByID);
-
-router.route("/:id").put(updateProfile);
-
-router.route("/:id").delete(deleteProfile);
+router
+  .route("/:id")
+  .get(getProfileByID)
+  .put(updateProfile)
+  .delete(deleteProfile);
 
 module.exports = router;
