@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const validateToken = require("../middleware/validateTokenHandler");
 const {
   getAllProfiles,
   createProfile,
@@ -7,6 +8,8 @@ const {
   updateProfile,
   deleteProfile,
 } = require("../controllers/profileControllers");
+
+router.use(validateToken);
 
 router.route("/").get(getAllProfiles).post(createProfile);
 
